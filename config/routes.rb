@@ -1,4 +1,19 @@
 Otsukare2::Application.routes.draw do
+  
+  #投稿(top)ページ
+  root :to => 'top#index'
+
+  #ログインページ
+  #メッセージページ
+  #resources :message, :only => [:create, :destroy, :show, :new]
+  #メッセージ一覧ページ(list_message) /otsukare/message/list_message/1/20
+  #show
+  #受信参照ページ(view_inBox_message)
+  #送信済み参照ページ(view_outBox_message)
+  #送信下書き参照ページ(view_outSaveBox_message)
+
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
