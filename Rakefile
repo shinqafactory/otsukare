@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Otsukare2::Application.load_tasks
+Otsukare::Application.load_tasks

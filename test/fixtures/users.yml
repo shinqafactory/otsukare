@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  password: MyString
+  email: MyString
+  age: 1
+  gender: 1
+  position: MyString
+  occupation: MyString
+  sns_flstring: MyString
+  thx_point_sum: 1
+
+two:
+  name: MyString
+  password: MyString
+  email: MyString
+  age: 1
+  gender: 1
+  position: MyString
+  occupation: MyString
+  sns_flstring: MyString
+  thx_point_sum: 1

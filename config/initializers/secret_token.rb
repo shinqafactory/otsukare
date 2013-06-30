@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Otsukare2::Application.config.secret_key_base = 'ef32b43281d6181f0cd01d5d43e9c70a0b4bcf8c1536f4a3b9e656b90bbbad07cf7b23343801f921113b6223e479481c9a8dd4126d8a0695acbd8fbb169fe5d7'
+Otsukare::Application.config.secret_key_base = 'ef32b43281d6181f0cd01d5d43e9c70a0b4bcf8c1536f4a3b9e656b90bbbad07cf7b23343801f921113b6223e479481c9a8dd4126d8a0695acbd8fbb169fe5d7'

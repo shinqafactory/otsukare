@@ -1,4 +1,4 @@
-Otsukare2::Application.routes.draw do
+Otsukare::Application.routes.draw do
   
   #投稿(top)ページ
   root :to => 'top#index'
