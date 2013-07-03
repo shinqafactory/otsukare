@@ -1,0 +1,24 @@
+  <div class="center hero-unit">
+    <h1>Welcome to the Otsukare App</h1>
+
+    <h2>
+      This is the index page for the
+      <a href="http://railstutorial.org/">Ruby on Rails Turorial</a>
+      Otsukare application
+    </h2>
+    
+    <p>otsukare list</p>
+    <ul>
+    	<% @entry.each do |entry| %>
+          <div>
+            <li>
+              content:<%= entry.content %>/created_at:<%= entry.created_at %>                  
+            </li>
+          </div>
+        <% end %>
+    </ul>
+
+
+  </div>
+
+

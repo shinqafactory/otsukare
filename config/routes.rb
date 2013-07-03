@@ -1,7 +1,10 @@
 Otsukare::Application.routes.draw do
-  
+
   #投稿(top)ページ
-  root :to => 'top#index'
+  root :to => 'tops#index'
+  resources :tops, :only => [:index, :show, :new]
+  #match ':top/' => 'tops#show'
+
 
   #ログインページ
   #メッセージページ
