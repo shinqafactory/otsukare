@@ -1,0 +1,50 @@
+/* bootstrap-sass の変数を上書き */
+$navbarText:                  #ffffff;
+$navbarBrandColor:            #ffffff;
+$navbarLinkColor:             #ffffff;
+$navbarLinkColorActive:       #ffffff;
+$navbarLinkColorHover:        #ffffff;
+$navbarBackground:            #673412;
+$navbarBackgroundHighlight:   #3a1703;
+$navbarLinkBackgroundActive:  #673412;
+
+.saijyoubu{background-color :#c0c0c0}
+.comment {background-color :#808080 ; }
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.saijyoubu {width: 800px}
+
+.saijyoubu {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.comment { width: 400px;}
+.comment {height: 400px}
+
+.comment {display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}   
+
+.nyuuryoku{ width: 300px;}
+.nyuuryoku{height: 200px}
+.daimei{ width: 300px;}
+
+.base{display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}   
+.base{ width: 1200px;}
+
+@import "bootstrap";
+@import "bootstrap-responsive";

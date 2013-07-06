@@ -34,6 +34,12 @@ end
 
 gem "protected_attributes", :github => "rails/protected_attributes"
 
+gem 'bootstrap-sass', '2.1'
+gem 'bootstrap-will_paginate','0.0.6'
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -7,12 +7,18 @@
       Otsukare application
     </h2>
     
+    
+    <p>otsukare post</p>
+    <%= form_for @entry_new, :url => {:action => 'create'} do |form| %>
+      <%= render 'tops/form' , form: form %>
+	<% end %>
+
     <p>otsukare list</p>
     <ul>
-    	<% @entry.each do |entry| %>
+    	<% @entries.each do |entries| %>
           <div>
             <li>
-              content:<%= entry.content %>/created_at:<%= entry.created_at %>                  
+              content:<%= entries.content %>/created_at:<%= entries.created_at %>
             </li>
           </div>
         <% end %>
