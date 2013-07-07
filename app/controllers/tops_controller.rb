@@ -3,18 +3,19 @@
 class TopsController < ApplicationController
   
   #ログイン後のページ初期表示
+  #表示順は新着順で表示
   def index
     @entry_new = Entry.new
-    @entries = Entry.find(:all, :order => "created_at DESC")
-  end
-  
-  def show
+    @entries = Entry.find(:all, :conditions => {:display_flg => 0}, :order => "created_at DESC")
   end
   
   #otsukare投稿
   def create
-    @entries = Entry.find(:all, :order => "created_at DESC")
+    @entries = Entry.find(:all, :conditions => {:display_flg => 0}, :order => "created_at DESC")
     @entry_new = Entry.new(params[:entry])
+      
+    #display_flg 「0:表示」を設定
+    @entry_new.display_flg = 0
     
     respond_to do |format|
       if @entry_new.save
@@ -26,6 +27,24 @@ class TopsController < ApplicationController
       end
     end
     @entry_new = Entry.new
+  end
+  
+  #otsukare投稿削除
+  #論理削除を行う
+  #TODO ログイン処理未実装のため、ログインユーザーに紐づく削除は後回し
+  def destroy
+    @entry = Entry.find(params[:id])
+    # 削除を設定
+    @entry.display_flg = '1'
+
+    respond_to do |format|
+      if @entry.update_attributes(params[:tsuiki])
+        format.html { redirect_to :controller => 'tops', :action => 'index', notice: 'deleted.' }
+      else
+        format.html { render action: "index" }
+        format.json { render json: @entry.errors, status: :unprocessable_entity }
+      end
+    end
   end
   
 end

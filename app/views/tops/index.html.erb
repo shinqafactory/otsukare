@@ -18,13 +18,12 @@
     	<% @entries.each do |entries| %>
           <div>
             <li>
-              content:<%= entries.content %>/created_at:<%= entries.created_at %>
+              id:<%= entries.id %>/content:<%= entries.content %>/created_at:<%= entries.created_at %>
+              <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" >Delete</a>
             </li>
           </div>
         <% end %>
     </ul>
-
-
   </div>
 
 

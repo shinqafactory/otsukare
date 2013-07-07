@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 class Entry < ActiveRecord::Base
-  attr_accessible :user_id, :content, :created_at, :updated_at
+  attr_accessible :user_id, :content, :created_at, :updated_at, :display_flg
   
   #投稿（content）の入力チェック
   validates :content, :presence => true,                  #必須チェック
