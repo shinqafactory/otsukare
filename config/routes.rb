@@ -3,6 +3,7 @@ Otsukare::Application.routes.draw do
   #投稿(top)ページ
   root :to => 'tops#index'
   resources :tops, :only => [:index, :create, :destroy]
+  resources :messages, :only => [:show, :create, :destroy]
   #match ':top/' => 'tops#show'
 
 

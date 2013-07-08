@@ -3,21 +3,11 @@
     <div class="container">
       <%= link_to "Otsukare", root_path, :class => 'brand' %>
       <ul class="nav">
-        <li>
-        <a href="#">
-          Home
-        </a>
-        </li>
-        <li>
-        <a href="#">
-          About
-        </a>
-        </li>
-        <li>
-        <a href="#">
-          Contact
-        </a>
-        </li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <!-- ログインユーザーに紐づくメッセージを表示 -->
+        <li><a href="/messages/1" data-method="get" rel="nofollow" >Message</a></li>
       </ul>
       <ul class="nav pull-right">
           <li><%= link_to "ログアウト", root_path %></li>

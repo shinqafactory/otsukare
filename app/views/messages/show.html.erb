@@ -1,0 +1,16 @@
+  <div class="center hero-unit">
+    <h1>Otsukare Message</h1>
+
+    <p>message list</p>
+    <ul>
+    	<% @messages.each do |messages| %>
+          <div>
+            <li>
+              from:<%= messages.from %>/to:<%= messages.to %>/user_id:<%= messages.user_id %>
+            </li>
+          </div>
+        <% end %>
+    </ul>
+  </div>
+
+
