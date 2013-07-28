@@ -1,0 +1,23 @@
+  <div class="center hero-unit">
+    <h1>Otsukare Message</h1>
+
+    
+    <p>message post</p>
+    <%= form_for @message_new do |form| %>
+      <%= render 'messages/form' , form: form %>
+	<% end %>
+
+    <p>message detail</p>
+    <ul>
+    	<% @messages.each do |messages| %>
+          <div>
+            <li>
+              from:<%= messages.msg_from %><br/>
+              body:<%= messages.body %>
+            </li>
+          </div>
+        <% end %>
+    </ul>
+  </div>
+
+

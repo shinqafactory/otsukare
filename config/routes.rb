@@ -6,7 +6,8 @@ Otsukare::Application.routes.draw do
   resources :messages, :only => [:show, :create, :destroy]
   #match ':top/' => 'tops#show'
 
-
+  match 'messages/detail/:id/:msg_from/:msg_to' => 'messages#detail', :via => :get
+  
   #ログインページ
   #メッセージページ
   #resources :message, :only => [:create, :destroy, :show, :new]

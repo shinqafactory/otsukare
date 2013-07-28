@@ -6,7 +6,14 @@
     	<% @messages.each do |messages| %>
           <div>
             <li>
-              from:<%= messages.from %>/to:<%= messages.to %>/user_id:<%= messages.user_id %>
+              from:<%= messages.msg_from %>/to:<%= messages.msg_to %>/user_id:<%= messages.user_id %>
+			  <%= link_to(messages.msg_from, 
+			  	:controller => 'messages',
+			  	:action => 'detail', 
+			  	:id => messages.user_id,
+			  	:msg_from => messages.msg_from,
+			  	:msg_to => messages.msg_to
+			   ) %>
             </li>
           </div>
         <% end %>

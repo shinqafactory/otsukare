@@ -2,8 +2,8 @@
 
 one:
   user_id: 1
-  to: MyString
-  from: MyString
+  msg_to: 1
+  msg_from: 1
   subject: MyString
   body: MyString
   link_id: 1
@@ -11,8 +11,8 @@ one:
 
 two:
   user_id: 1
-  to: MyString
-  from: MyString
+  msg_to: 1
+  msg_from: 1
   subject: MyString
   body: MyString
   link_id: 1
