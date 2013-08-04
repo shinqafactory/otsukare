@@ -41,6 +41,9 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'twitter-bootstrap-rails'
 
+# user login device on
+gem 'devise'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
