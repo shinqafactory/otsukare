@@ -1,10 +1,9 @@
 <%= render "shared/errors", obj: @entry_new %>
 
-  <div class="">
-    <%= form.label :投稿 %><br />
-    <%= form.text_field :content %>
+  <div class="" style="width:800px">
+    <%= form.text_area :content, :maxlength => "140", :style => "width:100%"  %>
+    <%= form.submit "otskare" %>
   </div>
   <div class="">
-    <%= form.submit %>
   </div>
 

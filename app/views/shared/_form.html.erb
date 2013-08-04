@@ -3,6 +3,10 @@
   <div class="">
     <%= form.label :message %><br />
     <%= form.text_field :body %>
+    <%= form.hidden_field :user_id %>
+    <%= form.hidden_field :msg_to %>
+    <%= form.hidden_field :msg_from %>
+    <%= form.hidden_field :link_id %>
   </div>
   <div class="">
     <%= form.submit %>

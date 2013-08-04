@@ -1,13 +1,5 @@
   <div class="center hero-unit">
-    <h1>Welcome to the Otsukare App</h1>
 
-    <h2>
-      This is the index page for the
-      <a href="http://railstutorial.org/">Ruby on Rails Turorial</a>
-      Otsukare application
-    </h2>
-    
-    
     <p>otsukare post</p>
     <%= form_for @entry_new, :url => {:action => 'create'} do |form| %>
       <%= render 'tops/form' , form: form %>
@@ -20,6 +12,12 @@
             <li>
               id:<%= entries.id %>/content:<%= entries.content %>/created_at:<%= entries.created_at %>
               <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" >Delete</a>
+			  <%= link_to('messege to', 
+			  	:controller => 'messages',
+			  	:action => 'send_messege', 
+			  	:entry_id => entries.id,
+			  	:msg_to => entries.user_id
+			   ) %>
             </li>
           </div>
         <% end %>

@@ -1,23 +1,22 @@
   <div class="center hero-unit">
     <h1>Otsukare Message</h1>
 
-    
-    <p>message post</p>
+    <p>message send</p>
     <%= form_for @message_new, :url => {:action => 'create'} do |form| %>
       <%= render 'shared/form' , form: form %>
 	<% end %>
 
-    <p>message detail</p>
+    <p>entry detail</p>
     <ul>
-    	<% @messages.each do |messages| %>
+    	<% @entry.each do |entry| %>
           <div>
             <li>
-              from:<%= messages.msg_from %><br/>
-              body:<%= messages.body %>
+              content:<%= entry.content %>
             </li>
           </div>
         <% end %>
     </ul>
+
   </div>
 
 

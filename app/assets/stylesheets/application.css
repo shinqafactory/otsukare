@@ -11,3 +11,32 @@
  *= require_self
  *= require_tree .
  */
+
+div#container {
+  margin: 0 auto;
+  padding-top: 5px;
+  width: $container_width;
+}
+
+div#content {
+  float: left;
+  width: $container_width - $sidebar_width - 20px;
+  padding: 10px 10px 10px 0;
+}
+
+div#sidebar {
+  float: left;
+  width: $sidebar_width;
+  background-color: #e8ffff;
+  padding: 5px;
+  font-size: 86%;
+}
+
+div#footer {
+  clear: both;
+  font: 11px Verdana;
+  color: #888;
+  padding: 8px 0;
+  border-top: 4px solid #6bb;
+  text-align: center;
+}
