@@ -37,8 +37,10 @@ class MessagesController < ApplicationController
   #messege送信
   def send_messege
     
-    # 初期値設定 TODO 本来はログインユーザー
-    @message_new = Message.new(link_id: params[:entry_id], msg_to: params[:msg_to], msg_from: 1, user_id: 1)
+    @user = current_user
+    
+    # 初期値設定 
+    @message_new = Message.new(link_id: params[:entry_id], msg_to: params[:msg_to], msg_from: @user.id, user_id: @user.id)
     
     #　enttry情報を取得する
     @entry = Entry.find(

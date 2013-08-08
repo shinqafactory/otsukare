@@ -3,13 +3,16 @@
     <div class="container">
       <ul class="nav">
         <li><%= link_to "Otsukare", root_path, :class => 'brand' %></li>
-        <!-- ログインユーザーに紐づくメッセージを表示 -->
-        <li><a href="/messages/1" data-method="get" rel="nofollow" >Message</a></li>
+　　　　　　　<% if user_signed_in? %>
+           <li><a href="/messages/<%= current_user.id %>" data-method="get" rel="nofollow" >Message</a></li>
+　　　　　　　<% end %>
       </ul>
       <ul class="nav pull-right">
-          <li><%= link_to "ログアウト", root_path %></li>
-          <li><%= link_to "サインアップ（無料）", root_path %></li>
-          <li><%= link_to "サインイン", root_path %></li>
+　　　　　　　<li><%= link_to "otsukareとは？", root_path %></li>
+　　　　　　　<% if user_signed_in? %>
+      　　　　　　　<li><%= link_to "ログイン：" + current_user.email %></li>
+　　　　　　　　　<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+　　　　　　　<% end %>
       </ul>
     </div>
   </div>

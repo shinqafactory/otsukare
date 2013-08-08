@@ -13,9 +13,12 @@ class TopsController < ApplicationController
   def create
     @entries = Entry.find(:all, :conditions => {:display_flg => 0}, :order => "created_at DESC")
     @entry_new = Entry.new(params[:entry])
-      
+    @user = current_user
+    
     #display_flg 「0:表示」を設定
     @entry_new.display_flg = 0
+    #ログインユーザーを設定
+    @entry_new.user_id = @user.id
     
     respond_to do |format|
       if @entry_new.save
