@@ -3,20 +3,27 @@
 
     <p>message list</p>
     <ul>
-    	<% @messages.each do |messages| %>
           <div>
-            <li>
-              from:<%= messages.msg_from %>/to:<%= messages.msg_to %>/user_id:<%= messages.user_id %>/body:<%= messages.body %>
-			  <%= link_to(messages.msg_from, 
-			  	:controller => 'messages',
-			  	:action => 'detail', 
-			  	:id => messages.user_id,
-			  	:msg_from => messages.msg_from,
-			  	:msg_to => messages.msg_to
-			   ) %>
-            </li>
+          	<table border="1" cellpadding="1" cellspacing="1">
+    	      <% @messages.each do |messages| %>
+          		<tr>
+          			<td>from:<%= messages.msg_from %></td>
+          			<td>to:<%= messages.msg_to %></td>
+          			<td>user_id:<%= messages.user_id %></td>
+          			<td>body:<%= messages.body %></td>
+          			<td>reply_id:<%= messages.reply_id %></td>
+          			<td>
+          				<%= link_to(messages.msg_from, 
+						  	:controller => 'messages',
+						  	:action => 'detail', 
+						  	:link_id => messages.link_id,
+						  	:reply_id => messages.reply_id
+						   ) %>
+			        </td>
+          		</tr>
+              <% end %>
+          	</table>
           </div>
-        <% end %>
     </ul>
   </div>
 

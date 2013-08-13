@@ -5,8 +5,9 @@ class MessagesController < ApplicationController
     #ログインユーザーに紐づくメッセージの一覧を取引ユーザー毎に表示
     @messages = Message.find(
       :all, 
-      :conditions => {:user_id => params[:id], :msg_to => params[:id]},
-      :group => [:user_id, :msg_from], 
+#      :conditions => {:user_id => params[:id], :msg_to => params[:id]},
+      :conditions => ["user_id = ? or msg_from = ? or msg_to = ?", params[:id], params[:id], params[:id]],
+      :group => [:link_id, :reply_id], 
       :order => "created_at DESC"
     )
   end
@@ -15,18 +16,30 @@ class MessagesController < ApplicationController
   def detail
     @messages = Message.find(
       :all,
-      :conditions => ["user_id = ? and (msg_from = ? or msg_to = ?)", params[:id], params[:msg_from], params[:msg_to]],
+      :conditions => ["link_id = ? and reply_id = ?",
+        params[:link_id], params[:reply_id]],
       :order => "created_at DESC"
     )
     
+    @user = current_user    
+
     #返信していなければ、返信用の値を設定
     if @messages.count == 1
       linkId = 0
+      replyId = 0
+      msgFrom = 0
       #IDを取得
       @messages.each do |messages|
-        linkId = messages.id
+        logger.info(messages.reply_id)
+        logger.info(messages.link_id)
+        
+        linkId = messages.link_id
+        replyId = messages.reply_id
+        msgFrom = messages.msg_from
       end
-      @message_new = Message.new(user_id: params[:id], msg_from: params[:id], msg_to: params[:msg_from], link_id: linkId)
+      logger.info(replyId)
+      logger.info(linkId)
+      @message_new = Message.new(user_id: @user.id, msg_from: @user.id, msg_to: msgFrom, link_id: linkId, reply_id: replyId)
     else
       #返信している場合は設定しない
       @message_new = Message.new()
@@ -37,20 +50,39 @@ class MessagesController < ApplicationController
   #messege送信
   def send_messege
     
-    @user = current_user
+    @user = current_user    
     
-    # 初期値設定 
-    @message_new = Message.new(link_id: params[:entry_id], msg_to: params[:msg_to], msg_from: @user.id, user_id: @user.id)
+    #既にメッセージを送っている場合はメッセージ詳細にリダイレクト
+    @message = Message.find(
+      :all,
+      :conditions => ["link_id = ? and msg_from = ?",
+        params[:entry_id], @user.id]
+    )
+    
+    if @message.present?
+      @message.each do |message|
+        redirect_to :controller => 'messages', :action => 'detail', :link_id => message.link_id, :reply_id => message.reply_id
+      end
+    end
     
     #　enttry情報を取得する
     @entry = Entry.find(
       :all, 
       :conditions => ["display_flg = ? and id = ?", 0, params[:entry_id]])
+
+    # 初期値設定 
+    @message_new = Message.new(
+      link_id: params[:entry_id], msg_to: params[:msg_to], msg_from: @user.id, user_id: @user.id)
+
   end
     
   #messege返信
   def create
     @message_new = Message.new(params[:message])
+      
+    if @message_new.reply_id.nil?
+      @message_new.reply_id = Time.now.to_i
+    end
     
     respond_to do |format|
       if @message_new.save

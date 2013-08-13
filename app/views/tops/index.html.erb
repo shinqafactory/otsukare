@@ -1,25 +1,32 @@
-  <div class="center hero-unit">
+  <div class="center control-group">
 
-    <p>otsukare post</p>
+    <label class="control-label">otsukare post</label>
     <%= form_for @entry_new, :url => {:action => 'create'} do |form| %>
       <%= render 'tops/form' , form: form %>
 	<% end %>
 
-    <p>otsukare list</p>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+    <label class="control-label">otsukare list</label>
     <ul>
     	<% @entries.each do |entries| %>
-          <div>
+          <div class="controls">
             <li>
               id:<%= entries.id %>/content:<%= entries.content %>/created_at:<%= entries.created_at %>
               <% if current_user.id == entries.user_id %>
                 <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" >Delete</a>
-              <% end %>
+              <% else %>
 			  <%= link_to('messege to', 
 			  	:controller => 'messages',
 			  	:action => 'send_messege', 
 			  	:entry_id => entries.id,
 			  	:msg_to => entries.user_id
 			   ) %>
+              <% end %>
             </li>
           </div>
         <% end %>

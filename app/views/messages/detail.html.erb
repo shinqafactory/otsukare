@@ -3,8 +3,10 @@
 
     
     <p>message post</p>
-    <%= form_for @message_new, :url => {:action => 'create'} do |form| %>
-      <%= render 'shared/form' , form: form %>
+    <% if @message_new.msg_to.present? && @message_new.msg_to != current_user.id %>
+      <%= form_for @message_new, :url => {:action => 'create'} do |form| %>
+        <%= render 'shared/form' , form: form %>
+	  <% end %>
 	<% end %>
 
     <p>message detail</p>

@@ -9,6 +9,6 @@ Otsukare::Application.routes.draw do
   #messege投稿
   match 'messages/send_messege/:entry_id/:msg_to' => 'messages#send_messege', :via => :get
   #messege詳細
-  match 'messages/detail/:id/:msg_from/:msg_to' => 'messages#detail', :via => :get
+  match 'messages/detail/:link_id/:reply_id' => 'messages#detail', :via => :get
   
 end
