@@ -12,25 +12,40 @@
 	</br>
 	</br>
     <label class="control-label">otsukare list</label>
-    <ul>
+      <ul>
     	<% @entries.each do |entries| %>
           <div class="controls">
             <li>
               id:<%= entries.id %>/content:<%= entries.content %>/created_at:<%= entries.created_at %>
+                <% @consents_new = Consent.new(
+                  consent_user_id: current_user.id, 
+                  entry_id: entries.id, 
+                  user_id: entries.user_id)
+                %>
+                <%= form_for @consents_new, :url => {:controller => 'consents', :action => 'create'} do |form| %>
+  		          <%= form.hidden_field :consent_user_id %>
+  		          <%= form.hidden_field :entry_id %>
+  		          <%= form.hidden_field :user_id %>
+                  <% if is_exists(entries.id, current_user.id) %>
+                    <%= form.submit "GJ!" %> <%= get_consent_count(entries.id) %>
+	              <% else %>
+                    <%= form.submit 'GJ!', :disabled => true  %> <%= get_consent_count(entries.id) %>
+	              <% end %>
+	            <% end %>
               <% if current_user.id == entries.user_id %>
                 <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" >Delete</a>
               <% else %>
-			  <%= link_to('messege to', 
-			  	:controller => 'messages',
-			  	:action => 'send_messege', 
-			  	:entry_id => entries.id,
-			  	:msg_to => entries.user_id
-			   ) %>
+			    <%= link_to('messege to', 
+			  	  :controller => 'messages',
+			  	  :action => 'send_messege', 
+			  	  :entry_id => entries.id,
+			  	  :msg_to => entries.user_id) 
+			  	%>
               <% end %>
             </li>
           </div>
         <% end %>
-    </ul>
+      </ul>
   </div>
 
 

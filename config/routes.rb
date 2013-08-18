@@ -11,4 +11,7 @@ Otsukare::Application.routes.draw do
   #messege詳細
   match 'messages/detail/:link_id/:reply_id' => 'messages#detail', :via => :get
   
+  #お疲れボタン
+  #post 'consents/consents_create' => 'consents#consents_create'
+  resources :consents, :only => [:create]
 end

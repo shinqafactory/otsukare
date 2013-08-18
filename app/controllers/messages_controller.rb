@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class MessagesController < ApplicationController
   
   # メッセージ一覧を表示する
