@@ -1,20 +1,31 @@
-<div class="navbar navbar-fixed-top navbar-inverse topbar">
+<!-- Navbar
+================================================== -->
+<div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <ul class="nav">
-        <li><%= link_to "Otsukare", root_path, :class => 'brand' %></li>
-　　　　　　　<% if user_signed_in? %>
-           <li><a href="/messages/<%= current_user.id %>" data-method="get" rel="nofollow" >Message</a></li>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          <li class="">
+          	<%= link_to "Otsukare", root_path, :class => 'brand' %>
+          </li>
+　　   　　　　　<% if user_signed_in? %>
+            <li class="">
+          	  <a href="/messages/<%= current_user.id %>" data-method="get" rel="nofollow" >Message</a>
+            </li>
+　　　　　　　   <% end %>
+　　　　　　　   <li class="">
+	        <%= link_to "otsukareとは？", root_path %>
+	      </li>
+　　　　　　　   <% if user_signed_in? %>
+			<li class="">
+			  <%= link_to "ログイン：" + current_user.email %>
+			</li>
+			<li class="">
+			  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+	       </li>
 　　　　　　　<% end %>
-      </ul>
-      <ul class="nav pull-right">
-　　　　　　　<li><%= link_to "otsukareとは？", root_path %></li>
-　　　　　　　<% if user_signed_in? %>
-      　　　　　　　<li><%= link_to "ログイン：" + current_user.email %></li>
-　　　　　　　　　<li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-　　　　　　　<% end %>
-      </ul>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-

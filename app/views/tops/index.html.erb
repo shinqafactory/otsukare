@@ -1,51 +1,59 @@
-  <div class="center control-group">
+<div class="span9">
 
-    <label class="control-label">otsukare post</label>
     <%= form_for @entry_new, :url => {:action => 'create'} do |form| %>
       <%= render 'tops/form' , form: form %>
 	<% end %>
-
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-    <label class="control-label">otsukare list</label>
-      <ul>
-    	<% @entries.each do |entries| %>
-          <div class="controls">
-            <li>
-              id:<%= entries.id %>/content:<%= entries.content %>/created_at:<%= entries.created_at %>
+ 
+     	<% @entries.each do |entries| %>
+          <div class="content page-solid entry-list">
+          	<div class="stream-item-header>
+              <small class="time"><%= entries.user_id %></small>
+              <div id="float_right">
+              <small class="time"><%= entries.created_at %></small>
+              </div>
+          	</div>
+            <p class="js-tweet-text tweet-text"><%= entries.content %></p>
                 <% @consents_new = Consent.new(
                   consent_user_id: current_user.id, 
                   entry_id: entries.id, 
                   user_id: entries.user_id)
                 %>
+<div class="row show-grid">
+                
+<div class="span2">
                 <%= form_for @consents_new, :url => {:controller => 'consents', :action => 'create'} do |form| %>
   		          <%= form.hidden_field :consent_user_id %>
   		          <%= form.hidden_field :entry_id %>
   		          <%= form.hidden_field :user_id %>
                   <% if is_exists(entries.id, current_user.id) %>
-                    <%= form.submit "GJ!" %> <%= get_consent_count(entries.id) %>
+                    <%= form.submit 'GJ', :class => 'btn btn-primary btn-small' %>
+                    <span class="badge badge-info"><%= get_consent_count(entries.id) %></span>
 	              <% else %>
-                    <%= form.submit 'GJ!', :disabled => true  %> <%= get_consent_count(entries.id) %>
+                    <%= form.submit 'GJ', :disabled => true, :class => 'btn btn-primary btn-small'  %>
+                    <span class="badge badge-info"><%= get_consent_count(entries.id) %></span>
 	              <% end %>
 	            <% end %>
+</div>
+<div class="span1">
               <% if current_user.id == entries.user_id %>
-                <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" >Delete</a>
+                <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" >
+                	<img src="<%= image_path("appbar.clear.inverse.png") %>" alt="Delete"  style="background-color:#990000;" width="45%" height="45%">
+                </a>
               <% else %>
-			    <%= link_to('messege to', 
+			    <%= button_to 'はげます', {
 			  	  :controller => 'messages',
 			  	  :action => 'send_messege', 
 			  	  :entry_id => entries.id,
-			  	  :msg_to => entries.user_id) 
+			  	  :msg_to => entries.user_id
+			  	  },
+			  	  :method => :get,
+			  	  :class => 'btn btn-primary btn-small'
 			  	%>
               <% end %>
-            </li>
+</div>
+</div>
+            </ul>
           </div>
         <% end %>
-      </ul>
-  </div>
-
+</div>
 

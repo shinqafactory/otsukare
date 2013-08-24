@@ -1,9 +1,8 @@
 <%= render "shared/errors", obj: @entry_new %>
 
-  <div class="span5 focused" style="width:800px">
-    <%= form.text_area :content, :maxlength => "140", :style => "width:80%"  %>
-    <%= form.submit "つぶやく" %>
-  </div>
-  <div class="">
+  <div class="page-solid">
+    <%= form.text_area :content, :maxlength => "140", :style => "width:75%"  %>
+    <%= form.submit 'つぶやく', :class => "btn btn-primary"  %>
+	</br></br></br>
   </div>
 
