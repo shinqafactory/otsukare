@@ -1,30 +1,31 @@
-  <div class="center hero-unit">
-    <h1>Otsukare Message</h1>
+  <div class="span9">
+    <h3>メッセージ一覧</h3>
 
-    <p>message list</p>
-    <ul>
-          <div>
-          	<table border="1" cellpadding="1" cellspacing="1">
-    	      <% @messages.each do |messages| %>
-          		<tr>
-          			<td>from:<%= messages.msg_from %></td>
-          			<td>to:<%= messages.msg_to %></td>
-          			<td>user_id:<%= messages.user_id %></td>
-          			<td>body:<%= messages.body %></td>
-          			<td>reply_id:<%= messages.reply_id %></td>
-          			<td>
-          				<%= link_to(messages.msg_from, 
-						  	:controller => 'messages',
-						  	:action => 'detail', 
-						  	:link_id => messages.link_id,
-						  	:reply_id => messages.reply_id
-						   ) %>
-			        </td>
-          		</tr>
-              <% end %>
-          	</table>
-          </div>
-    </ul>
+      <div>
+      	<table class="table table-hover table-condensed">
+	        <tr>
+	        	<th style="width: 10%">送信者</th>
+	        	<th style="width: 10%">送信先</th>
+	        	<th style="width: 70%">内容</th>
+	        	<th style="width: 10%">LINK</th>
+	        </tr>
+	      <% @messages.each do |messages| %>
+      		<tr>
+      			<td><%= messages.msg_from %></td>
+      			<td><%= messages.msg_to %></td>
+      			<td><%= messages.body %></td>
+      			<td>
+      				<%= link_to(messages.msg_from, 
+					  	:controller => 'messages',
+					  	:action => 'detail', 
+					  	:link_id => messages.link_id,
+					  	:reply_id => messages.reply_id
+					   ) %>
+		        </td>
+      		</tr>
+          <% end %>
+      	</table>
+      </div>
   </div>
 
 

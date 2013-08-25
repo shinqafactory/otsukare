@@ -1,25 +1,25 @@
-  <div class="center hero-unit">
-    <h1>Otsukare Message</h1>
-
-    
-    <p>message post</p>
+  <div class="span9">
+  	
     <% if @message_new.msg_to.present? && @message_new.msg_to != current_user.id %>
       <%= form_for @message_new, :url => {:action => 'create'} do |form| %>
         <%= render 'shared/form' , form: form %>
 	  <% end %>
 	<% end %>
 
-    <p>message detail</p>
-    <ul>
-    	<% @messages.each do |messages| %>
-          <div>
-            <li>
-              from:<%= messages.msg_from %><br/>
-              body:<%= messages.body %>
-            </li>
-          </div>
-        <% end %>
-    </ul>
+
+  	<% @messages.each do |messages| %>
+      <div class="content">
+      	<div class="row show-grid">
+		  <div class="span7"><h3><small><%= messages.msg_from %></small></h3></div>
+		  <div class="span2"><h3><small class="time"><%= messages.created_at %></small></h3></div>
+        </div>
+      	<div class="row show-grid">
+          <div class="span9"><p class="js-tweet-text tweet-text"><%= messages.body %></p></div>
+        </div>
+      </div>
+    <% end %>
+
+
   </div>
 
 

@@ -1,15 +1,13 @@
 <%= render "shared/errors", obj: @message_new %>
 
-  <div class="">
-    <%= form.label :message %><br />
-    <%= form.text_field :body %>
+  <div class="page-header">
+  	<p><%= @message_new.msg_to %>さんにメッセージを送ろう</p>
+    <%= form.text_area :body, :maxlength => "140", :style => "width:70%"  %>
+    <%= form.submit 'メッセージ作成', :class => "btn btn-primary btn-small" %>
     <%= form.hidden_field :user_id %>
     <%= form.hidden_field :msg_to %>
     <%= form.hidden_field :msg_from %>
     <%= form.hidden_field :link_id %>
     <%= form.hidden_field :reply_id %>
-  </div>
-  <div class="">
-    <%= form.submit %>
   </div>
 
