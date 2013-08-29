@@ -7,7 +7,7 @@
      	<% @entries.each do |entries| %>
           <div class="content page-solid entry-list">
 			<div class="row show-grid">
-			  <div class="span7"><h3><small><%= entries.user_id %></small></h3></div>
+			  <div class="span7"><h3><small><%= get_user_name(entries.user_id) %></small></h3></div>
 			  <div class="span2"><h3><small class="time"><%= entries.created_at %></small></h3></div>
 			</div>
 			<div class="row show-grid">

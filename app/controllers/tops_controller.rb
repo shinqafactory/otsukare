@@ -6,12 +6,12 @@ class TopsController < ApplicationController
   #表示順は新着順で表示
   def index
     @entry_new = Entry.new
-    @entries = Entry.find(:all, :conditions => {:display_flg => 0}, :order => "created_at DESC")
+    @entries = Entry.where(["display_flg = 0"]).order("created_at DESC")
   end
   
   #otsukare投稿
   def create
-    @entries = Entry.find(:all, :conditions => {:display_flg => 0}, :order => "created_at DESC")
+    @entries = Entry.where(["display_flg = 0"]).order("created_at DESC")
     @entry_new = Entry.new(params[:entry])
     @user = current_user
     

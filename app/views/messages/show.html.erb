@@ -11,8 +11,8 @@
 	        </tr>
 	      <% @messages.each do |messages| %>
       		<tr>
-      			<td><%= messages.msg_from %></td>
-      			<td><%= messages.msg_to %></td>
+      			<td><%= get_user_name(messages.msg_from) %></td>
+      			<td><%= get_user_name(messages.msg_to) %></td>
       			<td><%= messages.body %></td>
       			<td>
       				<%= link_to(messages.msg_from, 

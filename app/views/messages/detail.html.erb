@@ -10,7 +10,7 @@
   	<% @messages.each do |messages| %>
       <div class="content">
       	<div class="row show-grid">
-		  <div class="span7"><h3><small><%= messages.msg_from %></small></h3></div>
+		  <div class="span7"><h3><small><%= get_user_name(messages.msg_from) %></small></h3></div>
 		  <div class="span2"><h3><small class="time"><%= messages.created_at %></small></h3></div>
         </div>
       	<div class="row show-grid">

@@ -8,7 +8,7 @@
 	<% @entry.each do |entry| %>
       <div class="content">
       	<div class="row show-grid">
-		  <div class="span7"><h3><small><%= entry.user_id %></small></h3></div>
+		  <div class="span7"><h3><small><%= get_user_name(entry.user_id) %></small></h3></div>
 		  <div class="span2"><h3><small class="time"><%= entry.created_at %></small></h3></div>
         </div>
       	<div class="row show-grid">
