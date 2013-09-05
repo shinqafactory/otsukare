@@ -1,0 +1,10 @@
+<%= render "shared/errors", obj: @user %>
+
+  <div class="page-solid">
+　　　 ユーザー名
+    <%= form.text_field :name, :maxlength => "10"  %>
+    <%= form.text_field :email, :maxlength => "10"  %>
+    <%= form.submit '登録', :class => "btn btn-primary"  %>
+	</br></br></br>
+  </div>
+

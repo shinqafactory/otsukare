@@ -41,7 +41,7 @@ class TopsController < ApplicationController
     @entry.display_flg = '1'
 
     respond_to do |format|
-      if @entry.update_attributes(params[:tsuiki])
+      if @entry.update_attributes(params[:entry])
         format.html { redirect_to :controller => 'tops', :action => 'index', notice: 'deleted.' }
       else
         format.html { render action: "index" }
