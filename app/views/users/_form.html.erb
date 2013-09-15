@@ -1,10 +1,32 @@
 <%= render "shared/errors", obj: @user %>
-
-  <div class="page-solid">
-　　　 ユーザー名
-    <%= form.text_field :name, :maxlength => "10"  %>
-    <%= form.text_field :email, :maxlength => "10"  %>
-    <%= form.submit '登録', :class => "btn btn-primary"  %>
-	</br></br></br>
+  <div class="">
+  	<table class="table table-hover table-condensed table-striped">
+      <tbody>
+		  	<tr>
+	  			<td width="10%">ユーザー名</td>
+	  			<td width="90%"><%= form.text_field :name, :maxlength => "10" %></td>
+	  		</tr>
+	  		<tr>
+	  			<td width="10%">性別</td>
+	  			<td width="90%">
+	  				<div class="control-group">
+	            <div class="controls">
+		            <label class="radio">男性<%= form.radio_button :gender, 0, {:checked	=> true} %></label>
+	                <label class="radio">女性<%= form.radio_button :gender, 1, {} %></div>
+	        		</div>
+        		</div>
+	  			</td>
+	  		</tr>
+	  		<tr>
+	  			<td width="10%">年齢</td>
+	  			<td width="90%"><%= form.select :age, [["10代", 0],["20代", 1],["30代", 2],["40代", 3],["50代", 4],["60代", 5]], {}, {:class => "span2"} %></td>
+	  		</tr>
+	  		<tr>
+	  			<td width="10%"> 職業</td>
+	  			<td width="90%"><%= form.text_field :occupation, :maxlength => "10" %></td>
+	  		</tr>
+      </tbody>
+  	</table>
   </div>
+  <%= form.submit '登録', :class => "btn btn-primary"  %>
 

@@ -6,7 +6,7 @@ class TopsController < ApplicationController
   #表示順は新着順で表示
   def index
     @entry_new = Entry.new
-    @entries = Entry.where(["display_flg = 0"]).order("created_at DESC")
+    #@entries = Entry.where(["display_flg = 0"]).order("created_at DESC").limit(1)
   end
   
   #otsukare投稿

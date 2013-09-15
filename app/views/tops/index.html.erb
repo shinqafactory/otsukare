@@ -1,62 +1,14 @@
 <%= render "layouts/sidebar" %>
 
 <div class="span9">
-
-    <%= form_for @entry_new, :url => {:action => 'create'} do |form| %>
-      <%= render 'tops/form' , form: form %>
+<p class="notice"><%= notice %></p>
+  <%= form_for @entry_new, :url => {:action => 'create'} do |form| %>
+    <%= render 'tops/form' , form: form %>
 	<% end %>
 
-     	<% @entries.each do |entries| %>
-          <div class="content page-solid entry-list">
-			<div class="row show-grid">
-			  <div class="span7"><h3><small><%= get_user_name(entries.user_id) %></small></h3></div>
-			  <div class="span2"><h3><small class="time"><%= entries.created_at %></small></h3></div>
-			</div>
-			<div class="row show-grid">
-              <div class="span9"><p class="js-tweet-text tweet-text"><%= entries.content %></p></div>
-            </div>
-			<div class="row show-grid">
-			  <div class="span1">
-                <% @consents_new = Consent.new(
-                  consent_user_id: current_user.id, 
-                  entry_id: entries.id, 
-                  user_id: entries.user_id)
-                %>
-                
-                <%= form_for @consents_new, :url => {:controller => 'consents', :action => 'create'} do |form| %>
-  		          <%= form.hidden_field :consent_user_id %>
-  		          <%= form.hidden_field :entry_id %>
-  		          <%= form.hidden_field :user_id %>
-                  <% if is_exists(entries.id, current_user.id) %>
-                    <%= form.submit 'GJ', :class => 'btn btn-primary btn-small' %>
-                    <span class="badge badge-info"><%= get_consent_count(entries.id) %></span>
-	              <% else %>
-                    <%= form.submit 'GJ', :disabled => true, :class => 'btn btn-primary btn-small'  %>
-                    <span class="badge badge-info"><%= get_consent_count(entries.id) %></span>
-	              <% end %>
-	            <% end %>
-			  </div>
-			  <div class="span7">
-                <% if current_user.id != entries.user_id %>
-			      <%= button_to 'はげます', {
-			  	    :controller => 'messages',
-			  	    :action => 'send_messege', 
-			  	    :entry_id => entries.id,
-			  	    :msg_to => entries.user_id
-			  	    },
-			  	    :method => :get,
-			  	    :class => 'btn btn-primary btn-small'
-			  	  %>
-                <% end %>
-			  </div>
-			  <div class="span1">
-                <% if current_user.id == entries.user_id %>
-                  <a href="/tops/<%= entries.id %>" data-method="delete" rel="nofollow" ><i class="icon-trash icon-red"></i></a>
-                <% end %>
-			  </div>
-			</div>
-          </div>
-        <% end %>
-	  </div>
+	<div id="content_list"></div>
+	<br />
+  <button class="btn btn-primary" id="more"><i class="icon-th-list"></i> もっと見る</button>
 </div>
 
+<%= javascript_include_tag 'entriesApi' %>

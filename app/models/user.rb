@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  attr_accessible :name, :password, :email, :password_confirmation
+  attr_accessible :name, :password, :email, :password_confirmation, :age, :occupation, :gender
   
   #ユーザー名（name）の入力チェック
   validates :name, :presence => true,                  #必須チェック

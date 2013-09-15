@@ -7,6 +7,7 @@ Otsukare::Application.routes.draw do
   resources :tops, :only => [:index, :create, :destroy]
   resources :messages, :only => [:show, :create, :destroy]
 
+  match 'api/entry/:lim/:ofs' => 'entries#getEntryToJosn', :via => :get
   match 'users/profile/:id' => 'users#user_edit', :via => :get
 
   #messege投稿

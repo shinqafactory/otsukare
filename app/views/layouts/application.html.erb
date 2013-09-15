@@ -10,27 +10,15 @@
 <body data-spy="scroll" data-target=".bs-docs-sidebar">
 <%= render 'layouts/header' %>
   <div class="container">
-	<br />
-	<br />
-	<br />
-	<div class="row">
-	  <div class="content">
-	  <p class="notice"><%= notice %></p>
-	  <%= yield %>
-	  </div>
+		<br />
+		<br />
+		<br />
+		<div class="row">
+	  	<div class="content">
+	  		<%= yield %>
+	  	</div>
     </div>
   </div>
-<!--	<div class="sidebar">
-	  <%= render "layouts/sidebar" %>
-	</div>
-	<div class="content">
-	<p class="notice"><%= notice %></p>
-	<%= yield %>
-	</div>
-  </div>
-  <div id="footer">
-    <%= render "layouts/footer" %>
-  </div>
--->
+<%= render 'layouts/footer' %>
 </body>
 </html>
