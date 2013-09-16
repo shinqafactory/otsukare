@@ -11,12 +11,12 @@ function loadEntry() {
   var ofs;
 
   count = $("#content_list span").children().length;
-//  console.log(count);
+  console.log(count);
   
   if(count == 0) {
     ofs = 0;
   } else {
-    ofs = count - 1;
+    ofs = count;
   }
 //  console.log("ofs:" + String(ofs));
   
@@ -29,7 +29,7 @@ function loadEntry() {
           $("#more").hide();
           break;
         }
-        getList(data.results[i]);
+        getList(data.results[i], data.loginUserId);
       }
     },
     error: function() {
@@ -38,7 +38,7 @@ function loadEntry() {
   });
 }
 
-function getList(result) {
+function getList(result, loginUserId) {
   
   var list = new String();
   // 1段目
@@ -55,7 +55,34 @@ function getList(result) {
   list += "<div class='span9'><p class='js-tweet-text tweet-text'>";
   list += result.content;
   list += "</p></div></div>";
+  // 3段目
+  list += "<div class='row show-grid'><div class='span2'>";
   
+  // 自分のつぶやきだった場合や既に押した場合は押すことが出来ない
+  if ((result.check_count == null || result.check_count == 0) && result.user_id != loginUserId) {
+	  list += "<button class='gjOff btn btn-primary btn-small' consent_user_id='" + loginUserId
+	  	+ "' entry_id='" + result.id
+	  	+ "' user_id='" + result.user_id + "' onclick=''>おつかれ</button>";
+	  list += "<span class='gjCounter badge badge-info'>" + getNumber(result.consent_count) + "</span>";
+  } else {
+	  list += "<button class='gjOff btn btn-primary btn-small' disabled='true'>おつかれ</button>";
+	  list += "<span class='gjCounter badge badge-info'>" + getNumber(result.consent_count) + "</span>";
+  }
+  list += "</div>"
+  
+  // 自分のつぶやきの場合は表示しない
+  if (result.user_id != loginUserId) {
+	  list += "<div class='span6'><form method='get' action='/messages/send_messege/"+ result.id +"/ " + result.user_id + "'  class='button_to'>";
+	  list += "<button class='btn btn-primary btn-small'>はげます</button></form></div>";
+  } else {
+	  list += "<div class='span6'></div>";
+  }
+  
+  // 自分のつぶやきの場合は表示
+  if (result.user_id == loginUserId) {
+	  list += "<a href='/tops/" + result.id + "' data-method='delete' rel='nofollow' ><i class='icon-trash icon-red'></i></a>";
+  }
+  list += "</div>"
   list += "</span>";
   
   $("div#content_list")
@@ -74,7 +101,7 @@ function toLocaleString( date )
   // 一日の秒数
   var dayNum = 86400;
   
-  console.log(diffDate);
+//  console.log(diffDate);
   if (diffDate < 60) {
     rtnDate = "1分前"
   } else if (60 < diffDate && diffDate < 120) {
@@ -112,4 +139,48 @@ function toLocaleString( date )
   }
   
   return rtnDate;
+}
+
+
+//おつかれボタン
+$(function() {
+	$(document).on(
+			'click',
+			'button.gjOff',
+			function() {
+
+				var consent_user_id = $(this).attr('consent_user_id');
+				var entry_id = $(this).attr('entry_id');
+				var user_id = $(this).attr('user_id');
+
+				$(this).attr('disabled', 'true');
+				var num = incrementNum($(this).next().text(), consent_user_id, entry_id, user_id);
+				$(this).next().text(num);
+			});
+
+})
+
+//加算
+function incrementNum(cnt, consent_user_id, entry_id, user_id) {
+
+	var num = parseInt(cnt.replace(/,/g, ""));
+	var url = "http://localhost:3000/consents/insConsent/" + consent_user_id + "/" + entry_id + "/" + user_id + "/";
+
+	//APIに接続
+	$.ajax({
+		type : "POST",
+		url : url,
+		success : function(res) {
+		}
+	});
+
+	num = (num + 1);
+	return String(num);
+}
+
+function getNumber(num) {
+	if (num == null) {
+		return 0;
+	}
+	return num;
 }

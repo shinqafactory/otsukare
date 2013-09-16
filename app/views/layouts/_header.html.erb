@@ -22,7 +22,7 @@
 	      </li>
 　　　　　　　   <% if user_signed_in? %>
 			<li class="">
-			  <%= link_to "ログイン：" + current_user.email %>
+			  <%= link_to "ログイン：" + current_user.name %>
 			</li>
 			<li class="">
 			  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>

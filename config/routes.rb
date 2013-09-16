@@ -17,5 +17,6 @@ Otsukare::Application.routes.draw do
   
   #お疲れボタン
   #post 'consents/consents_create' => 'consents#consents_create'
-  resources :consents, :only => [:create]
+  match 'consents/insConsent/:consent_user_id/:entry_id/:user_id' => 'consents#insConsent', :via => :post
+  #resources :consents, :only => [:create]
 end

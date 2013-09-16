@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
   def detail
         
     @messages = Message.where(["link_id = ? and reply_id = ?",params[:link_id], params[:reply_id]]).order("created_at DESC")
-    @user = current_user    
+    @user = current_user
 
     #返信していなければ、返信用の値を設定
     if @messages.count == 1
