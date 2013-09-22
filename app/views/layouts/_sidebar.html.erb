@@ -4,6 +4,14 @@
 	      <tr><td>年齢</td><td><%= get_age(@user.age) %></td></tr>
 	      <tr><td>性別</td><td><%= get_gender(@user.gender) %></td></tr>
 	      <tr><td>職業</td><td><%= @user.occupation %></td></tr>
+	      <tr><td colspan="2">
+	      	<%= button_to(
+	      		"編集",
+	      		{ :controller => 'users', :action => 'user_edit', :id => @user.id },
+					  :class => 'btn btn-primary',
+					  :method => :get
+					) %>
+				</td></tr>
     </table>
   </div>
 
