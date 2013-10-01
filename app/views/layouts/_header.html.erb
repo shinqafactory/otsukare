@@ -3,32 +3,29 @@
 <div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <div class="nav-collapse collapse">
+      <div class="nav-collapse collapse span9">
         <ul class="nav">
           <li class="">
           	<%= link_to root_path do %>
-			  <i class="icon-home icon-white"></i>Home
+			        <i class="icon-home icon-white"></i>ホーム
           	<% end %>
           </li>
 　　   　　　　　<% if user_signed_in? %>
             <li class="">
           	  <a href="/messages/<%= current_user.id %>" data-method="get" rel="nofollow" >
-          	  <i class="icon-envelope icon-white"></i>DM
+          	  <i class="icon-envelope icon-white"></i>贈る言葉
           	  </a>
             </li>
 　　　　　　　   <% end %>
-　　　　　　　   <li class="">
-	        <%= link_to "moyacoとは？", root_path %>
-	      </li>
 　　　　　　　   <% if user_signed_in? %>
-			<li class="">
-			  <%= link_to "ログイン：" + current_user.name %>
-			</li>
-			<li class="">
-			  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-	       </li>
-　　　　　　　<% end %>
+    			  <li class="">
+			        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+	          </li>
+　　　　　　　   <% end %>
         </ul>
+      </div>
+      <div class="nav-collapse collapse">
+        <ul class="nav"><li class=""><%= link_to "moyacoとは？", root_path %></li></ul>
       </div>
     </div>
   </div>

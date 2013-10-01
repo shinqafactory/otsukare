@@ -30,4 +30,14 @@ module UsersHelper
       return "非公開"
     end
   end
+  
+  def get_residence(residence)
+    @residence = Prefecture.where(["id = ?", residence])
+    
+    @residence.each do | r |
+      return r.name
+    end
+    
+    return ""
+  end
 end

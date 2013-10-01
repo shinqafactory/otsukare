@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   
   def user_edit
     @user = User.find(params[:id])
+    @prefecture_for_options = Prefecture.order( id: :asc ).all
+          
   end
   
   # ユーザー登録

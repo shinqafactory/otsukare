@@ -73,7 +73,7 @@ function getList(result, loginUserId) {
   // 自分のつぶやきの場合は表示しない
   if (result.user_id != loginUserId) {
 	  list += "<div class='span6'><form method='get' action='/messages/send_messege/"+ result.id +"/ " + result.user_id + "'  class='button_to'>";
-	  list += "<button class='btn btn-primary btn-small'>はげます</button></form></div>";
+	  list += "<button class='btn btn-primary btn-small'>言葉を贈る</button></form></div>";
   } else {
 	  list += "<div class='span6'></div>";
   }

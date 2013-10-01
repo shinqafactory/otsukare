@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130816023911) do
+ActiveRecord::Schema.define(version: 20130923031958) do
 
   create_table "consents", force: true do |t|
     t.integer  "consent_user_id"
@@ -42,6 +42,12 @@ ActiveRecord::Schema.define(version: 20130816023911) do
     t.integer  "reply_id"
   end
 
+  create_table "prefectures", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "password"
@@ -64,6 +70,7 @@ ActiveRecord::Schema.define(version: 20130816023911) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.string   "password_confirmation"
+    t.integer  "residence"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

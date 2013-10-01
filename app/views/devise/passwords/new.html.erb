@@ -1,12 +1,12 @@
-<h2>Forgot your password?</h2>
+<h2>パスワードを忘れた?</h2>
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div>アカウント登録したメールアドレスを入力してください<br />
+  <%= f.email_field :email, :autofocus => true, :placeholder => 'メールアドレスを入力してください' %></div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+  <div><%= f.submit "送信", :class => 'btn btn-primary' %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

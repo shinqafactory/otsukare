@@ -22,8 +22,12 @@
 	  			<td width="90%"><%= form.select :age, [["10代", 0],["20代", 1],["30代", 2],["40代", 3],["50代", 4],["60代", 5]], {}, {:class => "span2"} %></td>
 	  		</tr>
 	  		<tr>
-	  			<td width="10%"> 職業</td>
+	  			<td width="10%">職業</td>
 	  			<td width="90%"><%= form.text_field :occupation, :maxlength => "10" %></td>
+	  		</tr>
+	  		<tr>
+	  			<td width="10%">住まい</td>
+	  			<td width="90%"><%= form.select :residence, options_from_collection_for_select(@prefecture_for_options, :id, :name, @user.residence) %></td>
 	  		</tr>
       </tbody>
   	</table>
