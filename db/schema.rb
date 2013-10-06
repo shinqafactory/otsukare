@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923031958) do
+ActiveRecord::Schema.define(version: 20131001153644) do
 
   create_table "consents", force: true do |t|
     t.integer  "consent_user_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20130923031958) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "display_flg"
+    t.integer  "category"
   end
 
   create_table "messages", force: true do |t|
