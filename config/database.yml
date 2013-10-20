@@ -48,12 +48,21 @@ development:
   # timeout: 5000
   # socket: /tmp/mysql.sock
 # 
+# production:
+  # adapter: mysql2
+  # encoding: utf8
+  # database: moyaco_db
+  # pool: 5
+  # username: moyaco_user
+  # password: password
+  # timeout: 5000
+  # socket: /tmp/mysql.sock
+
 production:
   adapter: mysql2
   encoding: utf8
-  database: moyaco_db
-  pool: 5
-  username: moyaco_user
-  password: password
-  timeout: 5000
-  socket: /tmp/mysql.sock
+  username: sqale_57045307fe
+  password: aaf64682e2707a587eb9456c98ded94e5c2c353cc32c86e7
+  database: sqale_57045307fe
+  host: mysql001.sqale.jp
+
