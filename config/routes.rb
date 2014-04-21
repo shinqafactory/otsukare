@@ -2,7 +2,8 @@ Otsukare::Application.routes.draw do
 
   devise_for :users
   #投稿(top)ページ
-  root :to => 'tops#index'
+  root :to => 'tops#index', :via => [:get, :post]
+#  root :to => 'tops#index'
   resources :users, :only => [:update]
   resources :tops, :only => [:index, :create, :destroy]
   resources :messages, :only => [:show, :create, :destroy]

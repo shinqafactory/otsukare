@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
       "entries.user_id",
       "entries.content",
       "entries.created_at",
-      "users.name",
+      "ifnull(users.name, '名無しユーザーさん') as name",
       "(select count(consents.id) from consents where consents.entry_id = entries.id) as consent_count",
       "(select count(consents.id) from consents where consents.entry_id = entries.id and (consents.user_id = " + @user.id.to_s + " or consents.consent_user_id = " + @user.id.to_s + ")) as check_count").
       joins("left join users on users.id = entries.user_id").
