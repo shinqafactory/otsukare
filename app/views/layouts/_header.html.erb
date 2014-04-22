@@ -1,19 +1,19 @@
 <!-- Navbar
 ================================================== -->
-<div class="navbar navbar-fixed-top navbar-inverse">
-  <div class="navbar-inner">
+<div class="navbar navbar-fixed-top navbar-default">
+  <div class="main-header">
     <div class="container">
       <div class="nav-collapse collapse span9">
         <ul class="nav">
           <li class="">
           	<%= link_to root_path do %>
-			        <i class="icon-home icon-white"></i>ホーム
+			        <i class="icon-home icon-white"></i><strong class="main-font">Otsukare</strong>
           	<% end %>
           </li>
 　　   　　　　　<% if user_signed_in? %>
             <li class="">
           	  <a href="/messages/<%= current_user.id %>" data-method="get" rel="nofollow" >
-          	  <i class="icon-envelope icon-white"></i>贈る言葉
+          	  <i class="icon-envelope icon-white"></i><strong class="main-font">贈る言葉</strong>
           	  </a>
             </li>
 　　　　　　　   <% end %>
