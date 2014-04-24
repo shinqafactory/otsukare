@@ -50,13 +50,17 @@ body.about-page {
 }
 
 .btn-main {
-    width:60px;
-    font-size:10px;
-    text-decoration:none;
-    display:block;
-    text-align:center;
-    padding:4px 0 5px;
-    color:#fff;
-    background-color:#49a9d4;
-    border-radius:5px;
+  font-size:11px;
+  text-align:center;
+  padding:4px 5px;
+  border-radius:5px;
+  background-color: #248; /* 背景色を濃い青色に指定 */
+  color: #fff; /* 文字色を白色に指定 */
+  border-style: none; /* ボーダーをなくす */  
+  font-weight: bold; /* 文字の太さをboldに指定 */
+}
+
+.btn-main:hover {
+  background-color: #24d; /* 背景色を濃い青色に指定 */
+  color: #fff; /* 文字色を白色に指定 */
 }

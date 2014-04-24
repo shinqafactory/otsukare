@@ -61,12 +61,12 @@ function getList(result, loginUserId) {
 		  list += "<div class='row show-grid padding20'>";
 		  // 自分のつぶやきだった場合や既に押した場合は押すことが出来ない
 		  if ((result.check_count == null || result.check_count == 0) && result.user_id != loginUserId) {
-			  list += "<button class='gjOff btn btn-primary btn-small' consent_user_id='" + loginUserId
+			  list += "<button class='gjOff btn-main' consent_user_id='" + loginUserId
 			  	+ "' entry_id='" + result.id
 			  	+ "' user_id='" + result.user_id + "' onclick=''>おつかれ</button>";
 			  list += "<span class='gjCounter badge badge-info'>" + getNumber(result.consent_count) + "</span>";
 		  } else {
-			  list += "<button class='gjOff btn btn-primary btn-small' disabled='true'>おつかれ</button>";
+			  list += "<button class='gjOff btn-main' disabled='true'>おつかれ</button>";
 			  list += "<span class='gjCounter badge badge-info'>" + getNumber(result.consent_count) + "</span>";
 		  }
 		  list += "</div>";
@@ -74,7 +74,7 @@ function getList(result, loginUserId) {
 		  // 自分のつぶやきの場合は表示しない
 		  if (result.user_id != loginUserId) {
 			  list += "<form method='get' action='/messages/send_messege/"+ result.id +"/ " + result.user_id + "'  class='button_to'>";
-			  list += "<button class='btn btn-primary btn-small'>言葉を贈る</button></form>";
+			  list += "<button class='btn-main'>言葉を贈る</button></form>";
 		  }
 		  list += "</div>";
 	  list += "</div>";
