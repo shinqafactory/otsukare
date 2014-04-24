@@ -61,13 +61,13 @@ function getList(result, loginUserId) {
 		  list += "<div class='row show-grid padding20'>";
 		  // 自分のつぶやきだった場合や既に押した場合は押すことが出来ない
 		  if ((result.check_count == null || result.check_count == 0) && result.user_id != loginUserId) {
-			  list += "<button class='gjOff btn-main' consent_user_id='" + loginUserId
+			  list += "<button class='gjOff btn-main float-left' consent_user_id='" + loginUserId
 			  	+ "' entry_id='" + result.id
 			  	+ "' user_id='" + result.user_id + "' onclick=''>おつかれ</button>";
-			  list += "<span class='gjCounter badge badge-info'>" + getNumber(result.consent_count) + "</span>";
+			  list += "<div style='padding-left:65px'><div class='arrow arrow_box'>" + getNumber(result.consent_count) + "</div></div>";
 		  } else {
-			  list += "<button class='gjOff btn-main' disabled='true'>おつかれ</button>";
-			  list += "<span class='gjCounter badge badge-info'>" + getNumber(result.consent_count) + "</span>";
+			  list += "<button class='gjOff btn-main float-left' disabled='true'>おつかれ</button>";
+			  list += "<div style='padding-left:65px'><div class='arrow arrow_box'>" + getNumber(result.consent_count) + "</div></div>";
 		  }
 		  list += "</div>";
 		  list += "<div class='row show-grid padding10'>";
@@ -146,7 +146,6 @@ function toLocaleString( date )
   return rtnDate;
 }
 
-
 //おつかれボタン
 $(function() {
 	$(document).on(
@@ -160,7 +159,7 @@ $(function() {
 
 				$(this).attr('disabled', 'true');
 				var num = incrementNum($(this).next().text(), consent_user_id, entry_id, user_id);
-				$(this).next().text(num);
+				$(this).next().next().text(num);
 			});
 
 })

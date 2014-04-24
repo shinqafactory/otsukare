@@ -2,8 +2,8 @@
 /* CSS Document */
 
 body {
-	padding-top: 120px;
-	background-color: #E2A9F3;
+  padding-top: 120px;
+  background-color: #E2A9F3;
   font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   font-size: 14px;
   line-height: 1.3;
@@ -16,7 +16,7 @@ body.about-page {
 }
 
 .main-header {
-	background-color: #610b5e;
+  background-color: #610b5e;
   font-family: 'Helvetica Neue', Helvetica, Arial, Verdana, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
   font-size: 14px;
   line-height: 1.3;
@@ -24,31 +24,35 @@ body.about-page {
   height: 100%;
 }
 
-
+/* 下地白 */
 .subBody {
-	background-color: #FFFFFF;	
+  background-color: #FFFFFF;
   padding:10px;
 }
 
+/* 余白10 */
 .padding10 {
-	padding-top:10px;
+  padding-top:10px;
   padding-left:30px;
   padding-right:10px;
   padding-bottom:10px;
 }
 
+/* 余白20 */
 .padding20 {
-	padding-top:20px;
+  padding-top:20px;
   padding-left:30px;
   padding-right:10px;
   padding-bottom:10px;
 }
 
+/* main font css */
 .main-font {
   font-size: 14px;
   color: #E2A9F3;
 }
 
+/* main button css */
 .btn-main {
   font-size:11px;
   text-align:center;
@@ -63,4 +67,48 @@ body.about-page {
 .btn-main:hover {
   background-color: #24d; /* 背景色を濃い青色に指定 */
   color: #fff; /* 文字色を白色に指定 */
+}
+
+.btn-main:disabled {
+  background: #949296;
+  cursor: default;
+}
+
+/* 吹きだし css */
+.arrow {
+  height: 23px;
+  width: 30px;
+  color: #fff; /* 文字色を白色に指定 */
+  font-weight: bold; /* 文字の太さをboldに指定 */
+  text-align:center;
+  padding-top:5px;
+  font-size:11px;
+}
+
+.arrow_box {
+  position: relative;
+  background: #248;
+  border-radius:5px;
+}
+
+.arrow_box:after {
+  right: 86%;
+  top: 58%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-right-color: #248;
+  border-width: 7px;
+  margin-top: -5px;
+}
+
+.float-left {
+  float:left;
+}
+
+.float-right {
+  float:right
 }
