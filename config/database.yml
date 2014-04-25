@@ -30,7 +30,7 @@ development:
   database: otsukare
   pool: 5
   username: root
-  password: password
+  password: 
   timeout: 5000
   socket: /tmp/mysql.sock
   host: 127.0.0.1

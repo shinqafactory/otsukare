@@ -1,31 +1,27 @@
-  <div class="span9">
+<%= render "layouts/sidebar" %>
+  <div class="span8 subBody">
+    <div class='content page-solid entry-list'>
     <h3>贈る言葉</h3>
-
-      <div>
-      	<table class="table table-hover table-condensed">
-	        <tr>
-	        	<th style="width: 10%">差出人</th>
-	        	<th style="width: 10%">受取人</th>
-	        	<th style="width: 70%">贈る言葉</th>
-	        	<th style="width: 10%">LINK</th>
-	        </tr>
-	      <% @messages.each do |messages| %>
-      		<tr>
-      			<td><%= get_user_name(messages.msg_from) %></td>
-      			<td><%= get_user_name(messages.msg_to) %></td>
-      			<td><%= messages.body %></td>
-      			<td>
-      				<%= link_to(messages.msg_from, 
-					  	:controller => 'messages',
-					  	:action => 'detail', 
-					  	:link_id => messages.link_id,
-					  	:reply_id => messages.reply_id
-					   ) %>
-		        </td>
-      		</tr>
-          <% end %>
-      	</table>
-      </div>
+    </div>
+        <% @messages.each do |messages| %>
+          <div class='content page-solid entry-list padding20'>
+            <div class='row show-grid'>
+              <div class='span2'>
+                <div class='row show-grid'><small>FROM:<%= get_user_name(messages.msg_from) %></small></div>
+                <div class='row show-grid'><small>TO:<%= get_user_name(messages.msg_to) %></small></div>
+              </div>
+              <div class='span4'><p class="js-tweet-text tweet-text"><%= messages.body %></p></div>
+              <div class='span1'>
+                <%= button_to(
+                  ">>返信",
+                  { :controller => 'messages', :action => 'detail', :link_id => messages.link_id, :reply_id => messages.reply_id },
+                  :class => 'btn-main',
+                  :method => :get
+                ) %>
+              </div>
+            </div>
+          </div>
+        <% end %>
   </div>
 
 

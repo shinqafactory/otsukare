@@ -9,6 +9,7 @@ class MessagesController < ApplicationController
       where(["user_id = ? or msg_from = ? or msg_to = ?", params[:id], params[:id], params[:id]]).
       group("link_id, reply_id").
       order("created_at DESC")
+    @user = current_user
   end
   
   # メッセージ詳細を表示する
