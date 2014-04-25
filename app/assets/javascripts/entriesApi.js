@@ -159,7 +159,7 @@ $(function() {
 
 				$(this).attr('disabled', 'true');
 				var num = incrementNum($(this).next().text(), consent_user_id, entry_id, user_id);
-				$(this).next().next().text(num);
+				$(this).next().text("").append("<div class='arrow arrow_box'>" + num + "</div>");
 			});
 
 })
