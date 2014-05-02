@@ -1,23 +1,21 @@
-<div class="span9">
-  <div class="content">
-
-    <%= form_for @message_new, :url => {:action => 'create'} do |form| %>
-      <%= render 'shared/form' , form: form %>
-	<% end %>
-
-	<% @entry.each do |entry| %>
-      <div class="content">
-      	<div class="row show-grid">
-		  <div class="span7"><h3><small><%= get_user_name(entry.user_id) %></small></h3></div>
-		  <div class="span2"><h3><small class="time"><%= entry.created_at %></small></h3></div>
+<%= render "layouts/sidebar" %>
+<div class="span8">
+  <div class="content subBody">
+    <% @entry.each do |entry| %>
+        <div class="row show-grid">
+          <div class="span5"><h3><small><%= get_user_name(entry.user_id) %></small></h3></div>
+          <div class="span2"><h3><small class="time"><%= entry.created_at %></small></h3></div>
         </div>
-      	<div class="row show-grid">
-          <div class="span9"><p class="js-tweet-text tweet-text"><%= entry.content %></p></div>
+        <div class="row show-grid">
+          <div class="span8"><p class="js-tweet-text tweet-text"><%= entry.content %></p></div>
         </div>
-      </div>
     <% end %>
-
+  </div>
+  <div class="row show-grid">&nbsp;</div>
+  <div class="content subBody">
+    <%= form_for @message_new, :url => {:action => 'create'} do |form| %>
+        <%= render 'shared/form' , form: form %>
+    <% end %>
   </div>
 </div>
-
 

@@ -13,7 +13,7 @@
               <div class='span4'><p class="js-tweet-text tweet-text"><%= messages.body %></p></div>
               <div class='span1'>
                 <%= button_to(
-                  ">>返信",
+                  " >> 返 信 ",
                   { :controller => 'messages', :action => 'detail', :link_id => messages.link_id, :reply_id => messages.reply_id },
                   :class => 'btn-main',
                   :method => :get

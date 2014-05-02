@@ -1,5 +1,7 @@
-<h2>ユーザー登録</h2>
+<div class="subBody">
+	<h2>ユーザー登録</h2>
 
-<%= form_for @user, :url => {:action => 'update'} do |form| %>
-  <%= render 'users/form' , form: form %>
-<% end %>
+	<%= form_for @user, :url => {:action => 'update'} do |form| %>
+	  <%= render 'users/form' , form: form %>
+	<% end %>
+</div>

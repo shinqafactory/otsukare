@@ -30,6 +30,27 @@ body.about-page {
   padding:10px;
 }
 
+/* 下地白 */
+.login-Body {
+  background-color: #FFFFFF;
+  padding:10px;
+  border-style: none; /* ボーダーをなくす */  
+  border-radius:20px;
+  height: 200px;
+  width: 400px;
+}
+
+/* 下地白 */
+.sinup-Body {
+  background-color: #FFFFFF;
+  padding:10px;
+  border-style: none; /* ボーダーをなくす */  
+  border-radius:20px;
+  height: 250px;
+  width: 400px;
+}
+
+
 /* 余白10 */
 .padding10 {
   padding-top:10px;
