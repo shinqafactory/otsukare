@@ -42,18 +42,18 @@ function getList(result, loginUserId) {
   
   var list = new String();
   // 1段目
-  list += "<span><div class='content page-solid entry-list'>";
+  list += "<span><div class='page-solid content-padding10'>";
   list += "<div class='row show-grid'>";
 	  list += "<div class='span5'>";
 	  list += "<div class='row show-grid'>";
 	  list += "<div class='span4'>";
-	  list += "<h3><small>" + result.name + "</small></h3></div>";
-	  list += "<div class='span1'><h3><small class='time'>";
+	  list += "<p class='content-sub-font'>" + result.name + "</p></div>";
+	  list += "<div class='span1'><p class='content-sub-font'>";
 	  list += toLocaleString(new Date(result.created_at));
-	  list += "</small></h3></div>";
+	  list += "</p></div>";
 	  list += "</div>";
 	  list += "<div class='row show-grid'>";
-	  list += "<div class='span5'><p class='js-tweet-text tweet-text'>" + result.content + "</p></div>";
+	  list += "<div class='span5'><p class='content-font'>" + result.content + "</p></div>";
 	  list += "</p></div>";
 	  list += "</div>";
 	  // 右
@@ -64,10 +64,10 @@ function getList(result, loginUserId) {
 			  list += "<button class='gjOff btn-main float-left' consent_user_id='" + loginUserId
 			  	+ "' entry_id='" + result.id
 			  	+ "' user_id='" + result.user_id + "' onclick=''>おつかれ</button>";
-			  list += "<div style='padding-left:65px'><div class='arrow arrow_box'>" + getNumber(result.consent_count) + "</div></div>";
+			  list += "<div style='padding-left:75px'><div class='arrow arrow_box'>" + getNumber(result.consent_count) + "</div></div>";
 		  } else {
 			  list += "<button class='gjOff btn-main float-left' disabled='true'>おつかれ</button>";
-			  list += "<div style='padding-left:65px'><div class='arrow arrow_box'>" + getNumber(result.consent_count) + "</div></div>";
+			  list += "<div style='padding-left:75px'><div class='arrow arrow_box'>" + getNumber(result.consent_count) + "</div></div>";
 		  }
 		  list += "</div>";
 		  list += "<div class='row show-grid padding10'>";
